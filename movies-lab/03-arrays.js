@@ -3,7 +3,7 @@ import { loadData } from "./load.js";
 import * as service from "./movies-service.js";
 
 const { movies } = loadData(); //we get from json file only movies array
-//3.2 
+//3.2
 console.log(service.getTitles(movies));
 
 //3.3
@@ -21,9 +21,19 @@ console.log(service.getTitles(service.getByGenre(movies, "Drama")));
 console.log(service.getTitles(service.searchByTitle(movies, "the")));
 
 //3.7
-console.log(`Before 1990: ${service.hasMoviesBefore(movies, 1990)}, Before 2000: ${service.hasMoviesBefore(movies, 2000)}`);
+console.log(
+  `Before 1990: ${service.hasMoviesBefore(movies, 1990)}, Before 2000: ${service.hasMoviesBefore(movies, 2000)}`,
+);
 console.log(service.allHaveDirector(movies));
 
 //3.8
 const interstellar = service.getById(movies, 3);
 console.log(service.getCastNames(interstellar));
+
+//3.9
+console.log(service.getDirectorTitles(movies, "Christopher Nolan"));
+
+//3.10
+const top3 = service.getTopRated(movies, 3);
+console.log(top3.map((movie) => `${movie.title}:${movie.rating}`));
+console.log(movies[0].title);
