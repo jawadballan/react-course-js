@@ -9,7 +9,8 @@ export const getShortMovies = (movies) =>
 export const findByTitle = (movies, title) =>
   movies.find((movie) => movie.title === title); //changing to find to return one object instead of an array of objects
 
-export const getOscarsLine = (movie) => `Oscars:${movie.awards.oscars}`;
+//#4
+export const getOscarsLine = (movie) => `Oscars:${movie.awards?.oscars ?? 0}`; //if movie.awards is undefined return 0
 
 export const sortByYear = (movies) => movies.sort((a, b) => a.year - b.year);
 
