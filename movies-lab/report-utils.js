@@ -1,11 +1,13 @@
 //#1
 export const getDirectorLine = (movie) => `Director:${movie.director.name}`;
+
 //#2
 export const getShortMovies = (movies) =>
   movies.filter((movie) => movie.duration < 100);
 
+//#3
 export const findByTitle = (movies, title) =>
-  movies.filter((movie) => movie.title === title);
+  movies.find((movie) => movie.title === title); //changing to find to return one object instead of an array of objects
 
 export const getOscarsLine = (movie) => `Oscars:${movie.awards.oscars}`;
 
