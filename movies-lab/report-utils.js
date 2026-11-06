@@ -1,10 +1,8 @@
 //#1
 export const getDirectorLine = (movie) => `Director:${movie.director.name}`;
-
+//#2
 export const getShortMovies = (movies) =>
-  movies.filter((movie) => {
-    movie.duration < 100;
-  });
+  movies.filter((movie) => movie.duration < 100);
 
 export const findByTitle = (movies, title) =>
   movies.filter((movie) => movie.title === title);
