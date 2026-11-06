@@ -39,3 +39,38 @@ export const getTopRated = (movies, count) =>
   [...movies]
     .sort((a, b) => b.rating - a.rating) //make a copy of movies sort it from top rate to lower
     .slice(0, count); //return slise from 0 to a count first 3 or first 2 or any
+
+//4.2  הוספת סרט
+export const addMovie = (movies, movie) => [...movies, movie]; //add a new movie to the end of the movies array and return a new array with the new movie added
+
+//4.3 מחיקת סרט
+export const removeMovie = (movies, id) =>
+  movies.filter((movie) => movie.id !== id); //return a new array with all the movies except the one with the given id
+
+//4.4 עדכון דירוג
+export const updateRating = (movies, id, rating) =>
+  movies.map((movie) => (movie.id === id ? { ...movie, rating } : movie)); //
+
+//4.5 הפוך זמינות
+export const toggleAvailable = (movies, id) =>
+  movies.map((movie) =>
+    movie.id === id ? { ...movie, available: !movie.available } : movie,
+  );
+
+//4.6 עדכון בתוך אובייקט פנימי
+export const updateDirectorCountry = (movies, id, country) =>
+  movies.map(
+    (movie) =>
+      movie.id === id
+        ? { ...movie, director: { ...movie.director, country } } //if id match return a new movie object with the director country updated to the new country
+        : movie, //if id not match return the movie object as is
+  );
+
+//4.7 הוספת תגובה למערך פנימי
+export const addReview = (movies, id, review) =>
+  movies.map(
+    (movie) =>
+      movie.id === id
+        ? { ...movie, reviews: [...movie.reviews, review] } //if id match return a new movie object with the reviews array updated to include the new review
+        : movie, //if id not match return the movie object as is
+  );
