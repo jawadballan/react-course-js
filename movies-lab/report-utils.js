@@ -1,4 +1,5 @@
-export const getDirectorLine = (movie) => `Director:${movie.director}`;
+//#1
+export const getDirectorLine = (movie) => `Director:${movie.director.name}`;
 
 export const getShortMovies = (movies) =>
   movies.filter((movie) => {
