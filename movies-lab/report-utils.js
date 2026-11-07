@@ -20,10 +20,12 @@ export const sortByYear = (movies) =>
 export const markAsWatched = (movies, id) => {
   return movies.map((movie) =>
     movie.id === id ? { ...movie, watched: true } : movie,
-);
+  );
 };
+
+//#7
 export const renameActor = (movie, index, newName) => {
-  const copy = { ...movie };
+  const copy = { ...movie, cast: movie.cast.map((actor) => ({ ...actor })) }; //chaneg pointing of cast and the actors to new objects so we can change the name of the actor without changing the original movie object
   copy.cast[index].name = newName;
   return copy;
 };
